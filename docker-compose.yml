@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   app:
-    image: ladysamantha/gifserver
+    image: sammiio/gifserver
     build: .
     environment:
       # place your API key in .env

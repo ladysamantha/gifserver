@@ -1,0 +1,37 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: gifserver
+spec:
+  type: LoadBalancer
+  selector:
+    app: gifserver
+  ports:
+    - port: 80
+      targetPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gifserver
+spec:
+  selector:
+    matchLabels:
+      app: gifserver
+  template:
+    metadata:
+      labels:
+        app: gifserver
+    spec:
+      containers:
+        - name: gifserver
+          image: sammiio/gifserver:latest
+          imagePullPolicy: Always
+          env:
+            - name: GIPHY_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: giphy
+                  key: apikey
+        - name: redis
+          image: redis:alpine

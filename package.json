@@ -14,7 +14,7 @@
     "prettier": "^1.15.3"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-pino-logger": "^4.0.0",
